@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{{ page.summary | default: page.description | default: site.description | strip_html | escape }}">
+    <style>
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.6;
+        color: #222;
+        background: #fff;
+      }
+
+      main {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 2rem 1rem 4rem;
+      }
+
+      h1, h2, h3 {
+        line-height: 1.2;
+      }
+
+      header.site {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 2rem 1rem 0;
+      }
+
+      header.site a {
+        color: #222;
+        text-decoration: none;
+      }
+
+      .site-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      .post-list {
+        padding-left: 1.25rem;
+      }
+
+      .post-meta {
+        color: #666;
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+      }
+
+      footer.site {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 0 1rem 2rem;
+        color: #666;
+        font-size: 0.95rem;
+      }
+
+      .site-contact {
+        border-top: 1px solid #e5e5e5;
+        padding-top: 1rem;
+      }
+
+      code, pre {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      }
+
+      pre {
+        overflow-x: auto;
+        background: #f6f6f6;
+        padding: 0.75rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site">
+      <a class="site-title" href="{{ '/' | absolute_url }}">{{ site.title }}</a>
+    </header>
+
+    <main>
+      {% if page.date %}
+        <h1>{{ page.title }}</h1>
+        <p class="post-meta">{{ page.date | date: "%B %-d, %Y" }}</p>
+      {% endif %}
+      {{ content }}
+    </main>
+
+    {% if site.contact_name or site.contact_email %}
+      <footer class="site">
+        <p class="site-contact">
+          Contact:
+          {% if site.contact_name %}{{ site.contact_name }}{% endif %}
+          {% if site.contact_email %}
+            {% if site.contact_name %} · {% endif %}
+            <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a>
+          {% endif %}
+        </p>
+      </footer>
+    {% endif %}
+  </body>
+</html>

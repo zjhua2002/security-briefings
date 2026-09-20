@@ -1,0 +1,22 @@
+title: Security Briefings
+description: Practical security briefings across product security, industry topics, and engineering lessons.
+timezone: Asia/Shanghai
+contact_name: zjhua2002
+baseurl: "/security-briefings"
+url: "https://zjhua2002.github.io"
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
+
+kramdown:
+  input: GFM
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: posts
+    values:
+      layout: default
+
+exclude:
+  - README.md
